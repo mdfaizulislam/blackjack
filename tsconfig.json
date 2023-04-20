@@ -1,0 +1,43 @@
+{
+    "compilerOptions": {
+        /* Visit https://aka.ms/tsconfig to read more about this file */
+        "target": "ES2016" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
+        "lib": [
+            "ES6"
+        ] /* Specify a set of bundled library declaration files that describe the target runtime environment. */,
+        "module": "commonjs" /* Specify what module code is generated. */,
+        "rootDir": "./src" /* Specify the root folder within your source files. */,
+        "outDir": "./built" /* Specify an output folder for all emitted files. */,
+        "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
+        "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
+        /* Type Checking */
+        "strict": true /* Enable all strict type-checking options. */,
+        "noImplicitReturns": true /* Enable error reporting for codepaths that do not explicitly return in a function. */,
+        "noImplicitAny": true /* Enable error reporting for expressions and declarations with an implied 'any' type. */,
+        "noUnusedLocals": true /* Enable error reporting when local variables aren't read. */,
+        "skipLibCheck": true /* Skip type checking all .d.ts files. */
+    },
+    "include": ["src/**/*"],
+    "exclude": [
+        // "analytics.ts", // add any especific file
+        // "*.dev.ts", // using wild card
+        // "**/*.dev.ts", // using wildcard including all folders
+        "node_modules", // would be added default,
+        "src/**/*.spec.ts"
+    ],
+    "devDependencies": {
+        "@types/express": "^4.17.17",
+        "@types/morgan": "^1.9.4",
+        "@types/node": "^18.15.11",
+        "@types/request": "^2.48.8",
+        "@typescript-eslint/eslint-plugin": "^5.59.0",
+        "@typescript-eslint/parser": "^5.59.0",
+        "eslint": "^8.38.0",
+        "eslint-config-prettier": "^8.8.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "nodemon": "^2.0.22",
+        "prettier": "^2.8.7",
+        "ts-node": "^10.9.1",
+        "typescript": "^5.0.4"
+    }
+}
