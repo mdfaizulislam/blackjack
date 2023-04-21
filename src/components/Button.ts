@@ -71,15 +71,10 @@ export class Button extends Sprite {
         if (!disabledSpriteOrTexture) {
             disabledSpriteOrTexture = normalSpriteOrTexture;
         }
-        this.mButtonNormalTexture = Helper.getSpriteTexture(
-            normalSpriteOrTexture
-        );
-        this.mButtonPressedTexture = Helper.getSpriteTexture(
-            pressedSpriteOrTexture
-        );
-        this.mButtonHoverTexture =
-            Helper.getSpriteTexture(hoverSpriteOrTexture);
-        this.mButtonDisabledTexture = Helper.getSpriteTexture(
+        this.mButtonNormalTexture = Helper.getTexture(normalSpriteOrTexture);
+        this.mButtonPressedTexture = Helper.getTexture(pressedSpriteOrTexture);
+        this.mButtonHoverTexture = Helper.getTexture(hoverSpriteOrTexture);
+        this.mButtonDisabledTexture = Helper.getTexture(
             disabledSpriteOrTexture
         );
 
