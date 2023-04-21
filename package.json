@@ -7,7 +7,7 @@
         "start": "webpack serve --mode=development",
         "build": "run-s clean build-only",
         "build-only": "webpack --mode=production",
-        "clean": "rimraf dist",
+        "clean": "rimraf built",
         "prettier-format": "prettier --config .prettierrc 'src/**/*.ts'  --write",
         "lint": "eslint . --ext .ts,.js"
     },
