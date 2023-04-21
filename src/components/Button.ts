@@ -83,16 +83,16 @@ export class Button extends Sprite {
     }
 
     public setButtonText(message: string): void {
-        if (!this.mbuttonText) {
-            this.addLabel();
+        if (this.mbuttonText != null) {
+            this.mbuttonText.text = message;
             return;
         }
 
-        this.mbuttonText.text = message;
+        this.addLabel(message);
     }
 
-    private addLabel(): void {
-        this.mbuttonText = new Text('', Helper.getButtonTextStyle());
+    private addLabel(message: string): void {
+        this.mbuttonText = new Text(message, Helper.getButtonTextStyle());
         this.mbuttonText.anchor.set(0.5, 0.5);
         this.mbuttonText.x = 0;
         this.mbuttonText.y = 0;
@@ -119,6 +119,7 @@ export class Button extends Sprite {
 
     public setButtonStatus(isDisabled: boolean) {
         this.mButtonDisabled = isDisabled;
+        this.eventMode = isDisabled ? 'none' : 'static';
         this.onButtonDisablilityChange();
     }
 
@@ -138,7 +139,7 @@ export class Button extends Sprite {
             .on('pointerup', this.onButtonUp, this)
             .on('pointerupoutside', this.onButtonUp, this);
 
-        this.interactive = true;
+        this.eventMode = 'static';
         this.cursor = 'pointer';
     }
 
@@ -211,7 +212,7 @@ export class Button extends Sprite {
             .off('pointerover', this.onButtonHoverStart, this)
             .off('pointerout', this.onButtonHoverEnd, this);
 
-        this.interactive = false;
+        this.eventMode = 'none';
     }
 
     public onDestry(): void {
