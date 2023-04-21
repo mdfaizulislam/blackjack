@@ -11,6 +11,7 @@ import { Button } from '../components/Button';
 import { AppController } from '../controllers/AppController';
 import { Helper } from './Helper';
 import { IScene } from './IScene';
+import { SceneController } from '../controllers/SceneController';
 
 export abstract class AScene extends Container implements IScene {
     public mlabelTitle: Text | null = null;
@@ -56,7 +57,7 @@ export abstract class AScene extends Container implements IScene {
     }
 
     protected onBackButtonPress(): void {
-        AppController.openLobbyScene();
+        SceneController.loadLobbyScene();
     }
 
     public showFPS(): void {

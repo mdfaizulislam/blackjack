@@ -37,13 +37,6 @@ export class Button extends Sprite {
     private mIsHoverEnabled: boolean = true;
     protected mLogger: Logger;
     private mCallback: Function | null = null;
-    private _name: string = '';
-    public get name(): string {
-        return this._name;
-    }
-    public set name(name: string) {
-        this._name = name;
-    }
     private mbuttonText: Text | null = null;
     constructor() {
         super();
@@ -53,7 +46,7 @@ export class Button extends Sprite {
         this.mButtonDisabledTexture = this.texture;
         this.mButtonHoverTexture = this.texture;
 
-        this.mLogger = new Logger('Button', true);
+        this.mLogger = Logger.createLogger('Button', false);
     }
 
     private constructorWithAssets(
@@ -102,8 +95,6 @@ export class Button extends Sprite {
     public setCallback(callback: Function | null) {
         this.mCallback = callback;
     }
-
-    public onEnable(): void {}
 
     private init(): void {
         this.width = this.mButtonNormalTexture.width;
@@ -173,7 +164,7 @@ export class Button extends Sprite {
                 // this.mLogger.Log("Pressing button");
                 this.mCallback(this.name);
             } else {
-                this.mLogger.Log('callback is not set', 2);
+                this.mLogger.Warn('callback is not set', 2);
             }
         }
     }
@@ -213,9 +204,5 @@ export class Button extends Sprite {
             .off('pointerout', this.onButtonHoverEnd, this);
 
         this.eventMode = 'none';
-    }
-
-    public onDestry(): void {
-        this.removeTouchEvents();
     }
 }

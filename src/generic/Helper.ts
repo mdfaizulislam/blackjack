@@ -12,7 +12,7 @@ import { AppController } from '../controllers/AppController';
 import { Logger } from './Logger';
 
 export class Helper {
-    private static mLogger = new Logger('Helper', true);
+    private static mLogger = Logger.createLogger('Helper', true);
     public static parseJSON(str: string): JSON {
         let jsonObject;
         try {
