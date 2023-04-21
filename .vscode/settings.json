@@ -3,6 +3,7 @@
     "editor.indentSize": 4,
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
+    "editor.codeLens": true,
     "editor.codeActionsOnSave": {
         "source.fixAll": true
     }
