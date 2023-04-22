@@ -47,7 +47,6 @@ export abstract class AScene extends Container implements IScene {
     protected addBackButtonButton(): void {
         this.mButton = Button.createButton('buttonBack');
         this.mButton.setCallback(this.onBackButtonPress.bind(this));
-        this.mButton.anchor.set(0.5, 0.5);
         this.mButton.scale.set(0.65, 0.65);
         this.mButton.x = this.mButton.width / 2;
         this.mButton.y = this.mButton.height / 2;
