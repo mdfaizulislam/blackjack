@@ -11,17 +11,16 @@ import { Logger } from '../generic/Logger';
 
 export class Button extends Sprite {
     public static createButton(
-        normalSpriteOrTexture: string | Texture,
-        pressedSpriteOrTexture?: string | Texture,
-        hoverSpriteOrTexture?: string | Texture,
-        disabledSpriteOrTexture?: string | Texture
+        normalImage: string | Texture,
+        pressedImage?: string | Texture,
+        hoverImage?: string | Texture,
+        disabledImage?: string | Texture
     ): Button {
-        const button: Button = new Button();
-        button.constructorWithAssets(
-            normalSpriteOrTexture,
-            pressedSpriteOrTexture,
-            hoverSpriteOrTexture,
-            disabledSpriteOrTexture
+        const button: Button = new Button(
+            normalImage,
+            pressedImage,
+            hoverImage,
+            disabledImage
         );
         return button;
     }
@@ -38,41 +37,27 @@ export class Button extends Sprite {
     protected mLogger: Logger;
     private mCallback: Function | null = null;
     private mbuttonText: Text | null = null;
-    constructor() {
+    constructor(
+        normalImage: string | Texture,
+        pressedImage?: string | Texture,
+        hoverImage?: string | Texture,
+        disabledImage?: string | Texture
+    ) {
         super();
-        this.texture = Texture.WHITE;
-        this.mButtonNormalTexture = this.texture;
-        this.mButtonPressedTexture = this.texture;
-        this.mButtonDisabledTexture = this.texture;
-        this.mButtonHoverTexture = this.texture;
-
         this.mLogger = Logger.createLogger('Button', false);
-    }
 
-    private constructorWithAssets(
-        normalSpriteOrTexture: string | Texture,
-        pressedSpriteOrTexture?: string | Texture,
-        hoverSpriteOrTexture?: string | Texture,
-        disabledSpriteOrTexture?: string | Texture
-    ): void {
-        if (!pressedSpriteOrTexture) {
-            pressedSpriteOrTexture = normalSpriteOrTexture;
-        }
-        if (!hoverSpriteOrTexture) {
-            hoverSpriteOrTexture = normalSpriteOrTexture;
-        }
-        if (!disabledSpriteOrTexture) {
-            disabledSpriteOrTexture = normalSpriteOrTexture;
-        }
-        this.mButtonNormalTexture = Helper.getTexture(normalSpriteOrTexture);
-        this.mButtonPressedTexture = Helper.getTexture(pressedSpriteOrTexture);
-        this.mButtonHoverTexture = Helper.getTexture(hoverSpriteOrTexture);
-        this.mButtonDisabledTexture = Helper.getTexture(
-            disabledSpriteOrTexture
-        );
+        pressedImage = pressedImage ? pressedImage : normalImage;
+        hoverImage = hoverImage ? hoverImage : normalImage;
+        disabledImage = disabledImage ? disabledImage : normalImage;
+
+        this.mButtonNormalTexture = Helper.getTexture(normalImage);
+        this.mButtonPressedTexture = Helper.getTexture(pressedImage);
+        this.mButtonHoverTexture = Helper.getTexture(hoverImage);
+        this.mButtonDisabledTexture = Helper.getTexture(disabledImage);
 
         this.onButtonDisablilityChange();
         this.init();
+        this.anchor.set(0.5, 0.5);
     }
 
     public setButtonText(message: string): void {
