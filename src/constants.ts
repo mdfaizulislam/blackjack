@@ -6,12 +6,22 @@
  *
  */
 
-export const Constants: any = {};
-Constants.EVENTS = {
-    ASSET_LOADING: 'asset_loading',
-    FIRE: 'fire'
-};
+export const Constants = {
+    EVENTS: {
+        ASSET_LOADING: 'asset_loading',
+        FIRE: 'fire'
+    },
 
-Constants.GAME_IDS = {
-    0: 'BlackJack'
+    PARTICLE: {
+        Gravity: 0.03,
+        ExplodeHeight: 0.4
+    },
+    TIME_MS: {
+        SECOND: 1000,
+        MINUTE: 60000,
+        HOUR: 3600000,
+        DAY: 86400000
+    },
+
+    GAME_IDS: ['BlackJack']
 };
