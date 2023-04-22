@@ -14,7 +14,7 @@ export class AssetsConfig implements AssetInitOptions {
             {
                 name: 'sprites',
                 assets: {
-                    bubble: './sprites/emoji.png',
+                    emoji: './sprites/emoji.png',
                     buttonBack: './sprites/buttons/buttonBack.png',
                     buttonGreenNormal:
                         './sprites/buttons/buttonGreenNormal.png',

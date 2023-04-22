@@ -31,7 +31,7 @@ export class ParticleExplotion extends Container {
 
     constructor() {
         super();
-        this.mLogger = new Logger('ExplotionParticle', true);
+        this.mLogger = new Logger('ExplotionParticle', false);
         this.name = 'ExplotionParticle';
         this.sortableChildren = true;
         this.mTextureCount = 0;
@@ -44,7 +44,7 @@ export class ParticleExplotion extends Container {
 
     private initTextures(): void {
         for (let i = 1; i < 11; i++) {
-            this.mTextures.push(Helper.getTexture('buttonBack'));
+            this.mTextures.push(Helper.getTexture('emoji'));
         }
     }
 
