@@ -50,7 +50,7 @@ export class Helper {
         } else if (spriteOrTexture instanceof Texture) {
             texture = spriteOrTexture;
         } else {
-            texture = Texture.WHITE;
+            texture = Texture.EMPTY;
         }
         return texture;
     }
