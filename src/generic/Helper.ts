@@ -27,6 +27,7 @@ export class Helper {
         const buttonTextStyle: TextStyle = new TextStyle({
             fontFamily: 'Arial',
             fontSize: 24,
+            fontWeight: 'bold',
             // fill: 0xff1010,
             align: 'center'
         });
@@ -41,6 +42,26 @@ export class Helper {
             align: 'center'
         });
         return sceneTitleTextStyle;
+    }
+
+    public static getCurrenyTextStyle(): TextStyle {
+        const currencyTextStyle: TextStyle = new TextStyle({
+            fontFamily: 'Arial',
+            fontSize: 24,
+            fontWeight: 'bold',
+            align: 'left'
+        });
+        return currencyTextStyle;
+    }
+
+    public static getBettingTextStyle(): TextStyle {
+        const currencyTextStyle: TextStyle = new TextStyle({
+            fontFamily: 'Arial',
+            fontSize: 24,
+            fontWeight: 'bold',
+            align: 'center'
+        });
+        return currencyTextStyle;
     }
 
     public static getTexture(spriteOrTexture: string | Texture): Texture {
