@@ -10,6 +10,7 @@ import { Application } from 'pixi.js';
 import { AScene } from '../generic/AScene';
 import { Logger } from '../generic/Logger';
 import { Helper } from '../generic/Helper';
+import { PersistantNode } from '../components/PersistantNode';
 // import { LobbyScene } from "../scenes/LobbyScene";
 
 export class AppController {
@@ -21,6 +22,7 @@ export class AppController {
     // Width and Height are read-only after creation (for now)
     private static _width: number;
     private static _height: number;
+    private static _persistantNode: PersistantNode;
 
     // With getters but not setters, these variables become read-only
     public static get width(): number {
@@ -32,6 +34,10 @@ export class AppController {
 
     public static getApp(): Application {
         return AppController.app;
+    }
+
+    public static getPersistantNode(): PersistantNode {
+        return AppController._persistantNode;
     }
 
     private static mLogger = Logger.createLogger('AppController', true);
@@ -67,6 +73,7 @@ export class AppController {
 
         // call it manually once so we are sure we are the correct size after starting
         AppController.resize();
+        AppController._persistantNode = PersistantNode.createPersistantNode();
     }
 
     private static onVisibilityChange(): void {
@@ -122,9 +129,9 @@ export class AppController {
     }
 
     // This update will be called by a pixi ticker and tell the scene that a tick happened
-    private static update(framesPassed: number): void {
+    private static update(delta: number): void {
         if (AppController.currentScene) {
-            AppController.currentScene.update(framesPassed);
+            AppController.currentScene.update(delta);
         }
     }
 }
