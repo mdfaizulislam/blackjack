@@ -23,5 +23,7 @@ export const Constants = {
         DAY: 86400000
     },
 
-    GAME_IDS: ['BlackJack']
+    COINS: [1, 2, 5, 10, 20],
+
+    GAME_IDS: ['Play BlackJack']
 };
