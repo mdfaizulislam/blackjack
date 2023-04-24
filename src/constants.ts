@@ -12,6 +12,10 @@ export const Constants = {
         FIRE: 'fire'
     },
 
+    GAME: {
+        WinMultiplier: 2
+    },
+
     PARTICLE: {
         Gravity: 0.03,
         ExplodeHeight: 0.4
