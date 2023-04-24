@@ -15,14 +15,17 @@ export class AssetsConfig implements AssetInitOptions {
                 name: 'sprites',
                 assets: {
                     emoji: './sprites/emoji.png',
+                    coin_stack: './sprites/coin_stack.png',
+                    gambler: './sprites/gambler.png',
+                    GamblerBack: './sprites/GamblerBack.png',
+                    gamblerFront: './sprites/gamblerFront.png',
+                    coinEnabled: './sprites/buttons/coinEnabled.png',
+                    coinDisabled: './sprites/buttons/coinDisabled.png',
+                    sqaureButtonD: './sprites/buttons/sqaureButtonD.png',
+                    sqaureButtonN: './sprites/buttons/sqaureButtonN.png',
+                    sqaureButtonH: './sprites/buttons/sqaureButtonH.png',
+                    sqaureButtonP: './sprites/buttons/sqaureButtonP.png',
                     buttonBack: './sprites/buttons/buttonBack.png',
-                    buttonGreenNormal:
-                        './sprites/buttons/buttonGreenNormal.png',
-                    buttonGreenHover: './sprites/buttons/buttonGreenHover.png',
-                    buttonGreenPressed:
-                        './sprites/buttons/buttonGreenPressed.png',
-                    buttonGreenDisabled:
-                        './sprites/buttons/buttonGreenDisabled.png',
                     card1: './sprites/cards/1.png',
                     card2: './sprites/cards/2.png',
                     card3: './sprites/cards/3.png',
