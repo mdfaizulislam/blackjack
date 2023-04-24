@@ -40,7 +40,7 @@ export class AppController {
         return AppController._persistantNode;
     }
 
-    private static mLogger = Logger.createLogger('AppController', true);
+    private static mLogger = Logger.createLogger('AppController', false);
 
     // Use this function ONCE to start the entire machiner
     public static initialize(
