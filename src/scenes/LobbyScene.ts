@@ -30,7 +30,7 @@ export class LobbyScene extends AScene {
     }
     constructor() {
         super();
-        this.mLogger = Logger.createLogger('LobbyScene', true);
+        this.mLogger = Logger.createLogger('LobbyScene', false);
         this.sceneName = 'Lobby Scene';
         this.mBalanceComponent = BalanceComponent.createBalanceComponent();
         this.mBetAmountText = new Text(
