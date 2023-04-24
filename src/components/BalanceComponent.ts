@@ -14,7 +14,7 @@ export class BalanceComponent extends Container {
     }
     constructor() {
         super();
-        this.mLogger = Logger.createLogger('BalanceComponent', true);
+        this.mLogger = Logger.createLogger('BalanceComponent', false);
         this.name = 'BalanceComponent';
         this.sortableChildren = true;
         this.mWidth = 120;
