@@ -10,7 +10,7 @@ export class Player {
     }
     constructor() {
         this.mBalance = 60;
-        this.mLogger = Logger.createLogger('Player', true);
+        this.mLogger = Logger.createLogger('Player', false);
     }
 
     getCurrentMoney(): number {
