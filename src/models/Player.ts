@@ -40,9 +40,10 @@ export class Player {
     }
 
     private onBalanceUpdate(): void {
+        this.mLogger.Log('Current Balance: ' + this.mBalance);
         AppController.getPersistantNode()
             .getBalanceListener()
-            .getAllListerns()
+            .getList()
             .forEach((callback) => {
                 if (callback) {
                     callback();
