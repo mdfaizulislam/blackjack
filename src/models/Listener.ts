@@ -9,12 +9,11 @@ export class Listener {
         this.mCallbackListeners.push(callback);
     }
 
-    public getAllListerns(): Function[] {
+    public getList(): Function[] {
         return this.mCallbackListeners;
     }
 
-    public removeCallbackListener(callback: Function): void {
-        const index = this.mCallbackListeners.indexOf(callback);
-        const x = this.mCallbackListeners.splice(index, 1);
+    public clearAllListener(): void {
+        this.mCallbackListeners.length = 0;
     }
 }
