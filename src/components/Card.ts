@@ -3,7 +3,6 @@ import { Helper } from '../generic/Helper';
 import { Logger } from '../generic/Logger';
 
 export class Card extends Sprite {
-    private mLogger: Logger;
     private mValue: number;
     private mSpriteBack: Sprite;
 
@@ -15,8 +14,7 @@ export class Card extends Sprite {
 
     constructor(value: number, front: string) {
         super();
-        this.mLogger = Logger.createLogger('Card', true);
-        this.mValue = value;
+        this.mValue = value % 13;
         this.texture = Helper.getTexture(front);
         this.width = this.texture.width;
         this.height = this.texture.height;
@@ -28,26 +26,19 @@ export class Card extends Sprite {
         this.addChild(this.mSpriteBack);
     }
 
-    public hideCardFront(): void {
-        this.mSpriteBack.visible = true;
-    }
-
     public showCardFront(): void {
         this.mSpriteBack.visible = false;
     }
 
     public isAce(): boolean {
-        return this.mValue % 13 == 0;
+        return this.mValue == 0;
     }
 
-    public getCardValue(): number {
-        this.mLogger.Log('value: ' + this.mValue);
-        let value = this.mValue % 13;
-        if (value == 0) {
-            // return 1 || 11
-            return 11; //
+    public getCardValue(minValue: boolean = true): number {
+        if (this.isAce()) {
+            return minValue ? 1 : 11;
         } else {
-            return value < 9 ? value + 1 : 10;
+            return this.mValue < 9 ? this.mValue + 1 : 10;
         }
     }
 }

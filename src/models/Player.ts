@@ -28,7 +28,7 @@ export class Player {
     public deductMoney(money: number): void {
         if (this.mBalance - money < 0) {
             this.mLogger.Error('Donot have enough money to deduct');
-            return;
+            throw new Error('Donot have enough money to deduct');
         }
 
         this.mBalance -= money;

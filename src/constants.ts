@@ -13,7 +13,10 @@ export const Constants = {
     },
 
     GAME: {
-        WinMultiplier: 2
+        WinMultiplier: {
+            X: 1,
+            X2: 2
+        }
     },
 
     PARTICLE: {
@@ -29,5 +32,5 @@ export const Constants = {
 
     COINS: [1, 2, 5, 10, 20],
 
-    GAME_IDS: ['Play BlackJack']
+    GAME_IDS: ['Play']
 };
