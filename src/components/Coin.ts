@@ -32,10 +32,4 @@ export class Coin extends Button {
         this.mLogger.Log('value: ' + this.mValue);
         return this.mValue;
     }
-
-    onDisable() {
-        AppController.getPersistantNode()
-            .getBalanceListener()
-            .removeCallbackListener(this.onBalanceUpdate.bind(this));
-    }
 }
