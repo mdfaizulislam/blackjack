@@ -16,12 +16,15 @@ export class Coin extends Button {
         super('coinEnabled', 'coinEnabled', 'coinEnabled', 'coinDisabled');
         this.mValue = value;
         this.setButtonText(value + '');
+    }
+
+    public addBalanceEventListener(): void {
         AppController.getPersistantNode()
             .getBalanceListener()
             .addCallbackListener(this.onBalanceUpdate.bind(this));
     }
 
-    onBalanceUpdate(): void {
+    public onBalanceUpdate(): void {
         let isPurchasable = AppController.getPersistantNode()
             .getPlayer()
             .hasEnoughMoney(this.mValue);
