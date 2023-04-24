@@ -26,7 +26,7 @@ export class LoadingScene extends AScene {
 
     constructor() {
         super();
-        this.mLogger = Logger.createLogger('LoadingScene', true);
+        this.mLogger = Logger.createLogger('LoadingScene', false);
         this.sceneName = 'LoadingScene';
 
         // console.log(this.screenWidth, this.screenHeight);
@@ -89,10 +89,5 @@ export class LoadingScene extends AScene {
     public removeAll(): void {
         this.loaderBar.removeFromParent();
         this.removeChild();
-        this.children.forEach((child) => {
-            if (child) {
-                child.removeFromParent();
-            }
-        });
     }
 }
