@@ -31,7 +31,7 @@ export abstract class AScene extends Container implements IScene {
         this.sortableChildren = true;
     }
 
-    protected addGameTitle(): void {
+    protected addSceneTitle(): void {
         this.mlabelTitle = new Text(
             this.name ? this.name : '',
             Helper.getSceneTitleTextStyle()
