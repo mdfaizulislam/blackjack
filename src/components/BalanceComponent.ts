@@ -15,6 +15,7 @@ export class BalanceComponent extends Container {
     constructor() {
         super();
         this.mLogger = Logger.createLogger('BalanceComponent', true);
+        this.name = 'BalanceComponent';
         this.sortableChildren = true;
         this.mWidth = 120;
 
@@ -25,18 +26,14 @@ export class BalanceComponent extends Container {
         // setup text
         this.mBalanceText = new Text('', Helper.getCurrenyTextStyle());
         this.initBalanceText();
-
-        // setup event listener
-        this.addBalanceEventListener();
     }
 
     private initCoinStack(): void {
         this.mCoinStack.anchor.set(0.5, 0.5);
         this.mCoinStack.scale.set(0.2, 0.2);
-        this.mLogger.Log('mWidth: ' + this.mWidth);
         this.mCoinStack.x = -this.mWidth / 2;
         this.mCoinStack.y = 0;
-        this.zIndex = 1;
+        this.zIndex = 3;
         this.addChild(this.mCoinStack);
     }
 
@@ -44,27 +41,26 @@ export class BalanceComponent extends Container {
         this.mBalanceText.anchor.set(0, 0.5);
         this.mBalanceText.x = this.mCoinStack.x + 30;
         this.mBalanceText.y = 0;
-        this.mBalanceText.zIndex = 2;
+        this.mBalanceText.zIndex = 4;
         this.addChild(this.mBalanceText);
 
         this.updateBalanceText();
     }
 
-    addBalanceEventListener(): void {
+    public addBalanceEventListener(): void {
+        let callback = () => {
+            this.updateBalanceText();
+        };
         AppController.getPersistantNode()
             .getBalanceListener()
-            .addCallbackListener(this.updateBalanceText.bind(this));
+            .addCallbackListener(callback);
     }
 
     updateBalanceText(): void {
-        this.mBalanceText.text =
+        let strBalance =
             '€' +
             AppController.getPersistantNode().getPlayer().getCurrentMoney();
-    }
-
-    onDisable(): void {
-        AppController.getPersistantNode()
-            .getBalanceListener()
-            .removeCallbackListener(this.updateBalanceText.bind(this));
+        this.mLogger.Log('CurrentBalance: ' + strBalance);
+        this.mBalanceText.text = strBalance;
     }
 }
