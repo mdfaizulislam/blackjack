@@ -9,7 +9,8 @@
         "build-only": "webpack --mode=production",
         "clean": "rimraf built",
         "prettier-format": "prettier --config .prettierrc 'src/**/*.ts'  --write",
-        "lint": "eslint . --ext .ts,.js"
+        "lint": "eslint . --ext .ts,.js",
+        "test": "mocha --watch --require ts-node/register ./src/tests/**/*.spec.ts"
     },
     "keywords": [
         "blackjack",
@@ -28,13 +29,17 @@
         "pixi.js": "^7.2.4"
     },
     "devDependencies": {
+        "@types/chai": "^4.3.4",
+        "@types/mocha": "^10.0.1",
         "@typescript-eslint/eslint-plugin": "^5.59.0",
         "@typescript-eslint/parser": "^5.59.0",
+        "chai": "^4.3.7",
         "copy-webpack-plugin": "^11.0.0",
         "eslint": "^8.38.0",
         "eslint-config-prettier": "^8.8.0",
         "eslint-plugin-prettier": "^4.2.1",
         "html-webpack-plugin": "^5.5.1",
+        "mocha": "^10.2.0",
         "npm-run-all": "^4.1.5",
         "prettier": "^2.8.7",
         "rimraf": "^5.0.0",
