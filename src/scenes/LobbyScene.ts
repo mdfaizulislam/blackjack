@@ -106,6 +106,7 @@ export class LobbyScene extends AScene {
             let callback = () => {
                 this.increaseBetAmount(coin.getCoinValue());
             };
+            coin.setButtonText(coinValue + '');
             coin.setCallback(callback);
             container.addChild(coin);
             this.mChipsButtons.push(coin);
