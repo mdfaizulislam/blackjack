@@ -73,6 +73,16 @@ export class Helper {
         return currencyTextStyle;
     }
 
+    public static getActionMessageTextStyle(): TextStyle {
+        const currencyTextStyle: TextStyle = new TextStyle({
+            fontFamily: 'Arial',
+            fontSize: 20,
+            fontWeight: 'normal',
+            align: 'center'
+        });
+        return currencyTextStyle;
+    }
+
     public static getTexture(spriteOrTexture: string | Texture): Texture {
         let texture;
         if (typeof spriteOrTexture === 'string' && spriteOrTexture.length > 0) {

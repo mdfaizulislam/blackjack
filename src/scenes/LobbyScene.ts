@@ -24,6 +24,7 @@ export class LobbyScene extends AScene {
     private mBalanceComponent: BalanceComponent;
     private mBetAmount: number = 0;
     private mBetAmountText: Text;
+    private mActionMessage: Text;
     private mChipsButtons: Coin[] = [];
     public static createScene(): AScene {
         return new LobbyScene();
@@ -36,6 +37,10 @@ export class LobbyScene extends AScene {
         this.mBetAmountText = new Text(
             'Betting: ' + this.mBetAmount,
             Helper.getBettingTextStyle()
+        );
+        this.mActionMessage = new Text(
+            'Click on Chips to set and increase bet amounts.',
+            Helper.getActionMessageTextStyle()
         );
         this.init();
     }
@@ -53,6 +58,7 @@ export class LobbyScene extends AScene {
         // this.addSceneTitle();
         this.initBalanceComponent();
         this.initBetComponent();
+        this.initActionMessageComponent();
         // this.showFPS();
         this.addChipsButtons();
         this.addPlayButtons();
@@ -75,6 +81,17 @@ export class LobbyScene extends AScene {
         this.mBetAmountText.anchor.set(0.5, 0.5);
         this.mBetAmountText.zIndex = 10;
         this.addChild(this.mBetAmountText);
+    }
+
+    private initActionMessageComponent(): void {
+        this.mActionMessage.x = AppController.width / 2;
+        this.mActionMessage.y =
+            this.mBetAmountText.y -
+            this.mBetAmountText.height -
+            this.mActionMessage.height;
+        this.mActionMessage.anchor.set(0.5, 0.5);
+        this.mActionMessage.zIndex = 10;
+        this.addChild(this.mActionMessage);
     }
 
     private increaseBetAmount(bet: number): void {
