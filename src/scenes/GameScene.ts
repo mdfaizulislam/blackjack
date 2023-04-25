@@ -37,7 +37,7 @@ export class GameScene extends AScene {
     }
     constructor() {
         super();
-        this.mLogger = Logger.createLogger('GameScene', true);
+        this.mLogger = Logger.createLogger('GameScene', false);
         this.sceneName = 'GameScene';
         this.mBalanceComponent = BalanceComponent.createBalanceComponent();
         this.mGambler = Gambler.createGampler(
