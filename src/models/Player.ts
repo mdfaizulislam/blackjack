@@ -1,3 +1,4 @@
+import { Constants } from '../constants';
 import { AppController } from '../controllers/AppController';
 import { Logger } from '../generic/Logger';
 
@@ -9,7 +10,7 @@ export class Player {
         return new Player();
     }
     constructor() {
-        this.mBalance = 60;
+        this.mBalance = Constants.PLAYER.InitialBalance;
         this.mLogger = Logger.createLogger('Player', false);
     }
 

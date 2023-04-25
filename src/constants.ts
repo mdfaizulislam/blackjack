@@ -7,11 +7,9 @@
  */
 
 export const Constants = {
-    EVENTS: {
-        ASSET_LOADING: 'asset_loading',
-        FIRE: 'fire'
+    PLAYER: {
+        InitialBalance: 1000
     },
-
     GAME: {
         WinMultiplier: {
             X: 1,
@@ -23,6 +21,7 @@ export const Constants = {
         Gravity: 0.03,
         ExplodeHeight: 0.4
     },
+
     TIME_MS: {
         SECOND: 1000,
         MINUTE: 60000,
