@@ -128,6 +128,10 @@ export class AppController {
         AppController.currentScene.onEnable();
     }
 
+    public static getCurrentScene(): AScene {
+        return AppController.currentScene;
+    }
+
     // This update will be called by a pixi ticker and tell the scene that a tick happened
     private static update(delta: number): void {
         if (AppController.currentScene) {
