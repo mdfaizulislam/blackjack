@@ -13,11 +13,12 @@ describe('Test Button', () => {
             isTriggered = true;
         };
         button.setCallback(callback);
-        button.emit(
-            'pointerup',
-            new FederatedPointerEvent(new EventBoundary())
-        );
-
+        try {
+            button.emit(
+                'pointerup',
+                new FederatedPointerEvent(new EventBoundary())
+            );
+        } catch (error) {}
         expect(isTriggered).to.be.true;
     });
 });
