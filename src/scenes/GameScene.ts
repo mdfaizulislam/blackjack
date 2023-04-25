@@ -18,14 +18,16 @@ import { AScene } from '../generic/AScene';
 import { Logger } from '../generic/Logger';
 import { CardHolder } from '../components/CardHolder';
 import { GameResultMessage } from '../components/GameResultMessage';
+import { BetInfoComponent } from '../components/BetInfoComponent';
 
 export class GameScene extends AScene {
     private mLogger: Logger;
     private mBalanceComponent: BalanceComponent;
     private mParticleExplotion: ParticleExplotion | null = null;
-
     private mStandButton: Button;
     private mHitButton: Button;
+    private mInfoButton: Button;
+    private mBetInfoComponent: BetInfoComponent;
     private mGambler: Gambler;
     private mDealerCardHolder: CardHolder;
     private mGamblerCardHolder: CardHolder;
@@ -53,25 +55,14 @@ export class GameScene extends AScene {
             'sqaureButtonH',
             'sqaureButtonD'
         );
+        this.mInfoButton = Button.createButton('buttonInfo');
+        this.mBetInfoComponent = BetInfoComponent.createBetInfoComponent();
 
         this.mDealerCardHolder = CardHolder.createCardHolder();
         this.mGamblerCardHolder = CardHolder.createCardHolder();
         this.mGameResultMessage = GameResultMessage.createGameResultMessage();
 
         this.init();
-    }
-
-    public onEnable(): void {
-        this.mBalanceComponent.addBalanceEventListener();
-        AppController.getPersistantNode()
-            .getGameController()
-            .setGameGameScene(this);
-
-        AppController.getPersistantNode().getGameController().startGameplay();
-    }
-
-    onShow(): void {
-        this.mLogger.Log('onShow');
     }
 
     private init() {
@@ -85,7 +76,23 @@ export class GameScene extends AScene {
         this.initGambler();
         this.initHitButton();
         this.initStandButton();
+        this.initInfoButton();
+        this.initBetInfoComponent();
         this.setGamblerButtonInteractibility(false);
+    }
+
+    public onEnable(): void {
+        this.mBalanceComponent.addBalanceEventListener();
+        this.mBetInfoComponent.addBalanceEventListener();
+        AppController.getPersistantNode()
+            .getGameController()
+            .setGameGameScene(this);
+
+        AppController.getPersistantNode().getGameController().startGameplay();
+    }
+
+    onShow(): void {
+        this.mLogger.Log('onShow');
     }
 
     private initBalanceComponent(): void {
@@ -173,6 +180,38 @@ export class GameScene extends AScene {
         AppController.getPersistantNode()
             .getGameController()
             .onStandButtonPress();
+    }
+
+    private initInfoButton(): void {
+        this.mInfoButton.name = 'Info';
+        this.mInfoButton.anchor.set(0.5, 0.5);
+        this.mInfoButton.scale.set(0.75, 0.75);
+        this.mInfoButton.zIndex = 4;
+        this.mInfoButton.x =
+            AppController.width - this.mInfoButton.width / 2 - 5;
+        this.mInfoButton.y = this.mInfoButton.height / 2 + 5;
+        // this.mInfoButton.setButtonText('Stand');
+        this.mInfoButton.setCallback(this.onInfoButtonPress.bind(this));
+
+        this.addChild(this.mInfoButton);
+    }
+
+    public updateInfoButtonVisibility(): void {
+        this.mInfoButton.visible = !this.mInfoButton.visible;
+    }
+
+    private onInfoButtonPress(): void {
+        this.mLogger.Log('Info button pressed');
+        this.mBetInfoComponent.updateComponentVisibility();
+    }
+
+    private initBetInfoComponent(): void {
+        this.mBetInfoComponent.zIndex = 7;
+        this.addChild(this.mBetInfoComponent);
+    }
+
+    public disableChipsButton(): void {
+        this.mBetInfoComponent.disableAllChipsButtons();
     }
 
     public setGamblerButtonInteractibility(isPressable: boolean) {
