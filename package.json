@@ -10,8 +10,7 @@
         "clean": "rimraf built",
         "prettier-format": "prettier --config .prettierrc 'src/**/*.ts'  --write",
         "lint": "eslint . --ext .ts,.js",
-        "test": "mocha --watch --require ts-node/register ./src/tests/**/*.spec.ts",
-        "testwithjsdom": "mocha --watch -require jsdom-global/register --require ts-node/register ./src/tests/**/*.spec.ts"
+        "test": "mocha --watch -require jsdom-global/register --require ts-node/register ./src/tests/**/*.spec.ts"
     },
     "keywords": [
         "blackjack",
