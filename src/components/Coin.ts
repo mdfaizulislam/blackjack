@@ -12,7 +12,6 @@ export class Coin extends Button {
     constructor(value: number) {
         super('coinEnabled', 'coinEnabled', 'coinEnabled', 'coinDisabled');
         this.mValue = value;
-        this.setButtonText(value + '');
     }
 
     public addBalanceEventListener(): void {

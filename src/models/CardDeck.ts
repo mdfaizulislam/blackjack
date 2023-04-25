@@ -41,4 +41,30 @@ export class CardDeck {
         }
         throw new Error('Deck is empty');
     }
+
+    public getDeckAsString(): string {
+        let deckString = '';
+        let types = ['C', 'H', 'D', 'S'];
+        let values = [
+            '2',
+            '3',
+            '4',
+            '5',
+            '6',
+            '7',
+            '8',
+            '9',
+            '10',
+            'J',
+            'K',
+            'Q',
+            'A'
+        ];
+        this.mCardValues.forEach((value) => {
+            let actualValue = value % 13;
+            deckString +=
+                types[Math.floor(value / 13)] + values[actualValue] + ' ';
+        });
+        return deckString;
+    }
 }
