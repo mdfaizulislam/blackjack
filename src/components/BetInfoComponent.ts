@@ -113,7 +113,6 @@ export class BetInfoComponent extends Container {
     }
 
     private updateBetAmount(addedAmount: number): void {
-        console.warn('updateBetAmount: ' + addedAmount);
         this.mGameController.increaseBetAmount(addedAmount);
         this.updateBettingText();
     }
