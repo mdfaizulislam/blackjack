@@ -10,7 +10,8 @@
         "clean": "rimraf built",
         "prettier-format": "prettier --config .prettierrc 'src/**/*.ts'  --write",
         "lint": "eslint . --ext .ts,.js",
-        "test": "mocha --watch --require ts-node/register ./src/tests/**/*.spec.ts"
+        "test": "mocha --watch --require ts-node/register ./src/tests/**/*.spec.ts",
+        "testwithjsdom": "mocha --watch -require jsdom-global/register --require ts-node/register ./src/tests/**/*.spec.ts"
     },
     "keywords": [
         "blackjack",
@@ -39,6 +40,8 @@
         "eslint-config-prettier": "^8.8.0",
         "eslint-plugin-prettier": "^4.2.1",
         "html-webpack-plugin": "^5.5.1",
+        "jsdom": "21.1.1",
+        "jsdom-global": "3.0.2",
         "mocha": "^10.2.0",
         "npm-run-all": "^4.1.5",
         "prettier": "^2.8.7",
