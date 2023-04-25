@@ -14,7 +14,7 @@ export class GameResultMessage extends Container {
     }
     constructor() {
         super();
-        this.mLogger = Logger.createLogger('GameResultMessage', true);
+        this.mLogger = Logger.createLogger('GameResultMessage', false);
         this.name = 'GameResultMessage';
         this.sortableChildren = true;
 
