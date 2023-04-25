@@ -87,13 +87,14 @@ export class BetInfoComponent extends Container {
     }
 
     private addChipsButtons(): void {
-        let posX = AppController.width / 4;
+        let container: Container = new Container();
+        let posX = 0;
         let offsetX = 5;
         Constants.COINS.forEach((coinValue) => {
             let coin: Coin = Coin.createCoin(coinValue);
             posX += coin.width / 2;
             coin.x = posX;
-            coin.y = AppController.height / 2;
+            coin.y = this.mBg.y;
             posX += offsetX + coin.width / 2;
             let callback = () => {
                 this.updateBetAmount(coin.getCoinValue());
@@ -101,9 +102,13 @@ export class BetInfoComponent extends Container {
             coin.setButtonText(coinValue + '');
             coin.setCallback(callback);
             coin.zIndex = 2;
-            this.addChild(coin);
+            container.addChild(coin);
             this.mChipsButtons.push(coin);
         });
+
+        container.x = this.mBg.x - posX / 2;
+        container.y = 0;
+        this.addChild(container);
     }
 
     public disableAllChipsButtons(): void {
