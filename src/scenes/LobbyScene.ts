@@ -22,7 +22,6 @@ export class LobbyScene extends AScene {
     private mLogger: Logger;
     private mLobbyButtons: Map<string, Button> = new Map<string, Button>();
     private mBalanceComponent: BalanceComponent;
-    private mBetAmount: number = 0;
     private mBetAmountText: Text;
     private mActionMessage: Text;
     private mChipsButtons: Coin[] = [];
@@ -34,12 +33,16 @@ export class LobbyScene extends AScene {
         this.mLogger = Logger.createLogger('LobbyScene', false);
         this.sceneName = 'Lobby Scene';
         this.mBalanceComponent = BalanceComponent.createBalanceComponent();
+        AppController.getPersistantNode().getGameController().setBetAmount(0);
         this.mBetAmountText = new Text(
-            'Betting: ' + this.mBetAmount,
+            'Betting: ' +
+                AppController.getPersistantNode()
+                    .getGameController()
+                    .getBettingAmount(),
             Helper.getBettingTextStyle()
         );
         this.mActionMessage = new Text(
-            'Click on Chips to set and increase bet amounts.',
+            'Click on Chips to set and increase bet amounts. \nBet can be increased while playing also from info button',
             Helper.getActionMessageTextStyle()
         );
         this.init();
@@ -83,6 +86,14 @@ export class LobbyScene extends AScene {
         this.addChild(this.mBetAmountText);
     }
 
+    public updateBetMessage(): void {
+        this.mBetAmountText.text =
+            'Betting: ' +
+            AppController.getPersistantNode()
+                .getGameController()
+                .getBettingAmount();
+    }
+
     private initActionMessageComponent(): void {
         this.mActionMessage.x = AppController.width / 2;
         this.mActionMessage.y =
@@ -95,18 +106,14 @@ export class LobbyScene extends AScene {
     }
 
     private increaseBetAmount(bet: number): void {
-        try {
-            AppController.getPersistantNode().getPlayer().deductMoney(bet);
-            this.mBetAmount += bet;
-            this.mBetAmountText.text = 'Betting: ' + this.mBetAmount;
-            this.mLogger.Log(
-                'increaseBetAmount: ' + bet + ' total: ' + this.mBetAmount
-            );
-        } catch (error) {
-            this.mLogger.Error('message: ' + JSON.stringify(error));
-        }
-
-        let enablePlayButton: boolean = this.mBetAmount > 0;
+        AppController.getPersistantNode()
+            .getGameController()
+            .increaseBetAmount(bet);
+        this.updateBetMessage();
+        let enablePlayButton: boolean =
+            AppController.getPersistantNode()
+                .getGameController()
+                .getBettingAmount() > 0;
         this.mLobbyButtons.get('gameid')?.setButtonStatus(!enablePlayButton);
     }
 
@@ -179,9 +186,6 @@ export class LobbyScene extends AScene {
     }
 
     private playBlackJack(): void {
-        AppController.getPersistantNode()
-            .getGameController()
-            .setBetAmount(this.mBetAmount);
         SceneController.loadGameScene();
     }
 

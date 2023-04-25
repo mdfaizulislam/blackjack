@@ -28,8 +28,29 @@ export class GameController {
         this.mGameScene = gameScene;
     }
 
+    public getBettingAmount(): number {
+        return this.mBetAmount;
+    }
+
     public setBetAmount(betAmount: number): void {
         this.mBetAmount = betAmount;
+    }
+
+    public increaseBetAmount(addedBetAmount: number): void {
+        try {
+            AppController.getPersistantNode()
+                .getPlayer()
+                .deductMoney(addedBetAmount);
+            this.mBetAmount += addedBetAmount;
+            this.mLogger.Log(
+                'increaseBetAmount: ' +
+                    addedBetAmount +
+                    ' total: ' +
+                    this.mBetAmount
+            );
+        } catch (error) {
+            this.mLogger.Error('message: ' + JSON.stringify(error));
+        }
     }
 
     private getRewardAmount(rewardMultiplier: number): number {
@@ -224,6 +245,7 @@ export class GameController {
         // show particle and return to lobby
         this.mGameScene?.showParticle();
         this.mGameScene?.showGameEndStatus('You win!');
+        this.mGameScene?.disableChipsButton();
         this.openLobbyScene(7);
     }
 
@@ -231,6 +253,7 @@ export class GameController {
         // return to lobby
         this.mLogger.Log('onGameLose');
         this.mGameScene?.showGameEndStatus('You lose!');
+        this.mGameScene?.disableChipsButton();
         this.openLobbyScene(5);
     }
 
