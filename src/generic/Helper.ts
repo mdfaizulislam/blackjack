@@ -17,7 +17,7 @@ export class Helper {
         try {
             jsonObject = JSON.parse(str);
         } catch (error) {
-            Helper.mLogger.Log('Error on Parsing ' + str, 3);
+            Helper.mLogger.Error('Error on Parsing ' + str, 3);
         }
         return jsonObject;
     }
