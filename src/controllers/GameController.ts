@@ -20,7 +20,7 @@ export class GameController {
     }
 
     constructor() {
-        this.mLogger = Logger.createLogger('GameController', true);
+        this.mLogger = Logger.createLogger('GameController', false);
         this.mCardDeck = CardDeck.createCardDeck();
     }
 
