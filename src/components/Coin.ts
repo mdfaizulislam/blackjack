@@ -1,6 +1,3 @@
-import { Sprite, Text } from 'pixi.js';
-import { Helper } from '../generic/Helper';
-import { Logger } from '../generic/Logger';
 import { Button } from './Button';
 import { AppController } from '../controllers/AppController';
 

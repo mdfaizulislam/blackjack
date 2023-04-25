@@ -2,7 +2,6 @@ import { Container, Sprite, Ticker } from 'pixi.js';
 import { Player } from '../models/Player';
 import { AppController } from '../controllers/AppController';
 import { Logger } from '../generic/Logger';
-import { Card } from './Card';
 enum Gambler_State {
     zoom_in = 1,
     zoom_out = 2

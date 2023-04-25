@@ -1,4 +1,3 @@
-import { Container } from 'pixi.js';
 import { Player } from '../models/Player';
 import { Listener } from '../models/Listener';
 import { GameController } from '../controllers/GameController';

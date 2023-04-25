@@ -1,6 +1,5 @@
-import { Sprite, Texture } from 'pixi.js';
+import { Sprite } from 'pixi.js';
 import { Helper } from '../generic/Helper';
-import { Logger } from '../generic/Logger';
 
 export class Card extends Sprite {
     private mValue: number;

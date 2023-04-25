@@ -8,7 +8,6 @@
 
 // dependencies
 import { Sprite, TextStyle, Texture } from 'pixi.js';
-import { AppController } from '../controllers/AppController';
 import { Logger } from './Logger';
 
 export class Helper {

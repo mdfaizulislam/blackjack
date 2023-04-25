@@ -1,5 +1,4 @@
 import { Card } from '../components/Card';
-import { Gambler } from '../components/Gambler';
 import { Constants } from '../constants';
 import { Logger } from '../generic/Logger';
 import { CardDeck } from '../models/CardDeck';
