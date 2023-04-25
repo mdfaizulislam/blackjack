@@ -53,6 +53,16 @@ export class Helper {
         return currencyTextStyle;
     }
 
+    public static getResultTextStyle(): TextStyle {
+        const currencyTextStyle: TextStyle = new TextStyle({
+            fontFamily: 'Arial',
+            fontSize: 35,
+            fontWeight: 'bold',
+            align: 'center'
+        });
+        return currencyTextStyle;
+    }
+
     public static getBettingTextStyle(): TextStyle {
         const currencyTextStyle: TextStyle = new TextStyle({
             fontFamily: 'Arial',

@@ -223,12 +223,14 @@ export class GameController {
 
         // show particle and return to lobby
         this.mGameScene?.showParticle();
+        this.mGameScene?.showGameEndStatus('You win!');
         this.openLobbyScene(7);
     }
 
     private onGameLose(): void {
         // return to lobby
         this.mLogger.Log('onGameLose');
+        this.mGameScene?.showGameEndStatus('You lose!');
         this.openLobbyScene(5);
     }
 

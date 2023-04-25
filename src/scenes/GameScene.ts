@@ -17,6 +17,7 @@ import { AppController } from '../controllers/AppController';
 import { AScene } from '../generic/AScene';
 import { Logger } from '../generic/Logger';
 import { CardHolder } from '../components/CardHolder';
+import { GameResultMessage } from '../components/GameResultMessage';
 
 export class GameScene extends AScene {
     private mLogger: Logger;
@@ -28,7 +29,7 @@ export class GameScene extends AScene {
     private mGambler: Gambler;
     private mDealerCardHolder: CardHolder;
     private mGamblerCardHolder: CardHolder;
-
+    private mGameResultMessage: GameResultMessage;
     public static createScene(): AScene {
         return new GameScene();
     }
@@ -55,6 +56,7 @@ export class GameScene extends AScene {
 
         this.mDealerCardHolder = CardHolder.createCardHolder();
         this.mGamblerCardHolder = CardHolder.createCardHolder();
+        this.mGameResultMessage = GameResultMessage.createGameResultMessage();
 
         this.init();
     }
@@ -78,6 +80,7 @@ export class GameScene extends AScene {
         // this.showFPS();
         this.initBalanceComponent();
         this.initCardHolders();
+        this.initGameResultComponent();
         this.addParticleExplotionHolder();
         this.initGambler();
         this.initHitButton();
@@ -102,6 +105,20 @@ export class GameScene extends AScene {
         this.mGamblerCardHolder.y = (2 * AppController.height) / 3;
         this.mGamblerCardHolder.zIndex = 2;
         this.addChild(this.mGamblerCardHolder);
+    }
+
+    private initGameResultComponent(): void {
+        this.mGameResultMessage.x = AppController.width / 2;
+        this.mGameResultMessage.y =
+            this.mBalanceComponent.y +
+            this.mBalanceComponent.height / 2 +
+            this.mGameResultMessage.height;
+        this.mGameResultMessage.zIndex = 6;
+        this.addChild(this.mGameResultMessage);
+    }
+
+    public showGameEndStatus(status: string): void {
+        this.mGameResultMessage.setResultText(status);
     }
 
     public addParticleExplotionHolder(): void {
