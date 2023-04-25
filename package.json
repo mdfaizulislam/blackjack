@@ -4,6 +4,7 @@
     "description": "poker blackjack using PixiJS",
     "main": "built/index.js",
     "scripts": {
+        "compile": "tsc",
         "start": "webpack serve --mode=development",
         "build": "run-s clean build-only",
         "build-only": "webpack --mode=production",
