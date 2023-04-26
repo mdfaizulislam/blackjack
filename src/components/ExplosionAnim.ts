@@ -51,8 +51,8 @@ export class ExplosionAnim extends Container {
             star.tint = this.mConfig.color;
             star.scale.set(this.mConfig.scale, this.mConfig.scale);
             star.anchor.set(0.5, 0.5);
-            star.x = AppController.height;
-            star.y = 0;
+            star.x = 0;
+            star.y = AppController.height;
             star.zIndex = 100;
             this.addChild(star);
             this.mStars.push(star);
