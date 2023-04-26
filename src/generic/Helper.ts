@@ -74,13 +74,14 @@ export class Helper {
     }
 
     public static getActionMessageTextStyle(): TextStyle {
-        const currencyTextStyle: TextStyle = new TextStyle({
+        const actionMessageTextStyle: TextStyle = new TextStyle({
             fontFamily: 'Arial',
             fontSize: 20,
+            wordWrapWidth: 600,
             fontWeight: 'normal',
             align: 'center'
         });
-        return currencyTextStyle;
+        return actionMessageTextStyle;
     }
 
     public static getTexture(spriteOrTexture: string | Texture): Texture {

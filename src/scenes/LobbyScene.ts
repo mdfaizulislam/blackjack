@@ -42,7 +42,7 @@ export class LobbyScene extends AScene {
             Helper.getBettingTextStyle()
         );
         this.mActionMessage = new Text(
-            'Click on Chips to set and increase bet amounts. \nBet can be increased while playing also from info button',
+            'Click on Chips to set and increase bet \namounts. Bet can be increased while \nplaying also from info button',
             Helper.getActionMessageTextStyle()
         );
         this.init();
