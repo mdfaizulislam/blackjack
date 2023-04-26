@@ -56,9 +56,10 @@ export class Helper {
     public static getResultTextStyle(): TextStyle {
         const currencyTextStyle: TextStyle = new TextStyle({
             fontFamily: 'Arial',
-            fontSize: 35,
-            fontWeight: 'bold',
-            align: 'center'
+            fontSize: 50,
+            fontWeight: 'bolder',
+            align: 'center',
+            fill: '#3f7d0d'
         });
         return currencyTextStyle;
     }

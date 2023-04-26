@@ -19,6 +19,7 @@ import { CardHolder } from '../components/CardHolder';
 import { GameResultMessage } from '../components/GameResultMessage';
 import { BetInfoComponent } from '../components/BetInfoComponent';
 import { WinAnimation } from '../components/WinAnimation';
+import { Dealer } from '../components/Dealer';
 
 export class GameScene extends AScene {
     private mLogger: Logger;
@@ -72,6 +73,7 @@ export class GameScene extends AScene {
         // this.showFPS();
         this.initBalanceComponent();
         this.initCardHolders();
+        this.addDealer();
         this.initGameResultComponent();
         this.initWinAnimation();
         // this.addParticleExplotionHolder();
@@ -116,11 +118,20 @@ export class GameScene extends AScene {
         this.addChild(this.mGamblerCardHolder);
     }
 
+    private addDealer(): void {
+        let dealer: Dealer = Dealer.createDealer();
+        dealer.anchor.set(0.5, 0.5);
+        dealer.x = this.mDealerCardHolder.x;
+        dealer.y = this.mDealerCardHolder.y - dealer.height;
+        dealer.zIndex = 0;
+        this.addChild(dealer);
+    }
+
     private initGameResultComponent(): void {
         this.mGameResultMessage.x = AppController.width / 2;
         this.mGameResultMessage.y =
             this.mBalanceComponent.y +
-            this.mBalanceComponent.height / 2 +
+            this.mBalanceComponent.height +
             this.mGameResultMessage.height;
         this.mGameResultMessage.zIndex = 6;
         this.addChild(this.mGameResultMessage);
