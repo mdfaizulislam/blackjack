@@ -14,7 +14,7 @@ export class AssetsConfig implements AssetInitOptions {
             {
                 name: 'sprites',
                 assets: {
-                    emoji: './sprites/emoji.png',
+                    star: './sprites/star.png',
                     coin_stack: './sprites/coin_stack.png',
                     gambler: './sprites/gambler.png',
                     GamblerBack: './sprites/GamblerBack.png',

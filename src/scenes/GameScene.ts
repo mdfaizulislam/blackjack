@@ -12,18 +12,18 @@
 import { BalanceComponent } from '../components/BalanceComponent';
 import { Button } from '../components/Button';
 import { Gambler } from '../components/Gambler';
-import { ParticleExplotion } from '../components/ParticleExplotion';
 import { AppController } from '../controllers/AppController';
 import { AScene } from '../generic/AScene';
 import { Logger } from '../generic/Logger';
 import { CardHolder } from '../components/CardHolder';
 import { GameResultMessage } from '../components/GameResultMessage';
 import { BetInfoComponent } from '../components/BetInfoComponent';
+import { WinAnimation } from '../components/WinAnimation';
 
 export class GameScene extends AScene {
     private mLogger: Logger;
     private mBalanceComponent: BalanceComponent;
-    private mParticleExplotion: ParticleExplotion | null = null;
+    private mWinAnimation: WinAnimation;
     private mStandButton: Button;
     private mHitButton: Button;
     private mInfoButton: Button;
@@ -43,6 +43,7 @@ export class GameScene extends AScene {
         this.mGambler = Gambler.createGampler(
             AppController.getPersistantNode().getPlayer()
         );
+        this.mWinAnimation = WinAnimation.createWinAnimation();
         this.mHitButton = Button.createButton(
             'sqaureButtonN',
             'sqaureButtonP',
@@ -72,7 +73,8 @@ export class GameScene extends AScene {
         this.initBalanceComponent();
         this.initCardHolders();
         this.initGameResultComponent();
-        this.addParticleExplotionHolder();
+        this.initWinAnimation();
+        // this.addParticleExplotionHolder();
         this.initGambler();
         this.initHitButton();
         this.initStandButton();
@@ -124,18 +126,19 @@ export class GameScene extends AScene {
         this.addChild(this.mGameResultMessage);
     }
 
+    private initWinAnimation(): void {
+        this.mWinAnimation.x = AppController.width / 2;
+        this.mWinAnimation.y = AppController.height / 2;
+        this.mWinAnimation.zIndex = 100;
+        this.addChild(this.mWinAnimation);
+    }
+
     public showGameEndStatus(status: string): void {
         this.mGameResultMessage.setResultText(status);
     }
 
-    public addParticleExplotionHolder(): void {
-        this.mParticleExplotion = ParticleExplotion.createParticleExplotion();
-        this.mParticleExplotion.zIndex = 6;
-        this.addChild(this.mParticleExplotion);
-    }
-
     public showParticle(): void {
-        this.mParticleExplotion?.startEmitiingParticle();
+        this.mWinAnimation.showExplosionAnimation();
     }
 
     private initHitButton(): void {
@@ -143,10 +146,7 @@ export class GameScene extends AScene {
         this.mHitButton.anchor.set(0.5, 0.5);
         this.mHitButton.zIndex = 4;
         this.mHitButton.x =
-            this.mGambler.x +
-            this.mGambler.width / 2 +
-            this.mHitButton.width +
-            10;
+            this.mGambler.x + this.mGambler.width / 2 + this.mHitButton.width;
         this.mHitButton.y = this.mGambler.y;
         this.mHitButton.setButtonText('Hit');
         this.mHitButton.setCallback(this.onHitButtonPress.bind(this));
@@ -165,10 +165,7 @@ export class GameScene extends AScene {
         this.mStandButton.anchor.set(0.5, 0.5);
         this.mStandButton.zIndex = 4;
         this.mStandButton.x =
-            this.mGambler.x -
-            this.mGambler.width / 2 -
-            this.mStandButton.width -
-            10;
+            this.mGambler.x - this.mGambler.width / 2 - this.mStandButton.width;
         this.mStandButton.y = this.mGambler.y;
         this.mStandButton.setButtonText('Stand');
         this.mStandButton.setCallback(this.onStandButtonPress.bind(this));
@@ -264,7 +261,7 @@ export class GameScene extends AScene {
         AppController.getPersistantNode()
             .getBalanceListener()
             .clearAllListener();
-        this.mParticleExplotion?.stopEmittingParticle(true);
+        this.mWinAnimation.stopAnimations();
         this.removeChild();
     }
 }

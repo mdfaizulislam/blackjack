@@ -254,7 +254,7 @@ export class GameController {
         this.mLogger.Log('onGameLose');
         this.mGameScene?.showGameEndStatus('You lose!');
         this.mGameScene?.disableChipsButton();
-        this.openLobbyScene(5);
+        this.openLobbyScene(3);
     }
 
     private openLobbyScene(delay_seconds: number): void {
