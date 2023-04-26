@@ -36,8 +36,8 @@ export class BetInfoComponent extends Container {
 
     private initBG(): void {
         this.mBg.anchor.set(0.5, 0.5);
-        this.mBg.width = AppController.width * 0.75;
-        this.mBg.height = AppController.height * 0.5;
+        this.mBg.width = AppController.width * 0.95;
+        this.mBg.height = AppController.height * 0.35;
         this.mBg.x = AppController.width / 2;
         this.mBg.y = AppController.height / 2;
         this.addChild(this.mBg);
