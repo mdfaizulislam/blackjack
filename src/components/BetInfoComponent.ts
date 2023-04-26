@@ -22,7 +22,7 @@ export class BetInfoComponent extends Container {
         this.mGameController =
             AppController.getPersistantNode().getGameController();
         this.mBetAmountText = new Text(
-            'Currently Betting: ' + this.mGameController.getBettingAmount(),
+            'Betting: ' + this.mGameController.getBettingAmount(),
             Helper.getBettingTextStyle()
         );
         this.mBg = Sprite.from(Helper.getTexture('bg'));
@@ -64,7 +64,7 @@ export class BetInfoComponent extends Container {
 
     private updateBettingText(): void {
         this.mBetAmountText.text =
-            'Currently Betting: ' + this.mGameController.getBettingAmount();
+            'Betting: ' + this.mGameController.getBettingAmount();
     }
 
     public updateComponentVisibility(): void {
